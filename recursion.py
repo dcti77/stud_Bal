@@ -146,33 +146,33 @@
 #
 # P.S. Теория сортировки в видео предыдущего шага.
 
-def sort_m(A):
-    i = k = n = 0
-    res = [0] * len(A)
-    if len(A) <= 1:
-        return
-    middle = len(A) // 2
-    L = [A[i] for i in range[:middle]]
-    R = [A[i] for i in range[middle:len(A)]]
-    sort_m(L)
-    sort_m(R)
-    while i < len(L) and k < len(R):
-        if L[i] <= R[k]:
-            res[n] = L[i]
-            i += 1
-            n += 1
-        else:
-            res[n] = R[k]
-            k += 1
-            n += 1
-    while i < len(L):
-        res[n] = L[i]
-        i += 1
-        n += 1
-    while k < len(R):
-        res[n] = R[k]
-        k += 1
-        n += 1
-    return res
+i = list(map(int, input().split()))
 
-print(sort_m([-2,-3,0,1,6,10]))
+
+def merge_list(a, b):
+    c = []
+    i = 0
+    j = 0
+    while i < len(a) and j < len(b):
+        if a[i] <= b[j]:
+            c.append(a[i])
+            i += 1
+        else:
+            c.append(b[j])
+            j += 1
+
+    c += a[i:] + b[j:]
+    return c
+
+def split_and_merge_list(a):
+    middle = len(a)//2
+    L = a[:middle]
+    R = a[middle:]
+    if len(L) > 1:
+        L = split_and_merge_list(L)
+    if len(R) > 1:
+        R = split_and_merge_list(R)
+
+    return merge_list(L, R)
+
+print(*split_and_merge_list(i))
