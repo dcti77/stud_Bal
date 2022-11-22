@@ -57,6 +57,74 @@
 # indx = random.randint(a, b)
 # Сгенерируйте с помощью этой функции первые пять паролей и выведите их в столбик (каждый с новой строки).
 
+# import random
+# from string import ascii_lowercase, ascii_uppercase
+#
+# chars = ascii_lowercase + ascii_uppercase + "0123456789!?@#$*"
+#
+# random.seed(1)
+#
+#
+# def new_pass(chars, N=None):
+#     while "1":
+#         res = ""
+#         for i in range(N):
+#             res = res + chars[random.randint(0, len(chars))]
+#         yield res
+#
+#
+# N = int(input())
+# passw = new_pass(chars, N)
+#
+# for _ in range(5):
+#     print(next(passw))
 
-from string import ascii_lowercase, ascii_uppercase
-chars = ascii_lowercase + ascii_uppercase + "0123456789!?@#$*"
+
+# Подвиг 4. Вводится натуральное число N. Используя строки из латинских букв ascii_lowercase и ascii_uppercase:
+#
+# from string import ascii_lowercase, ascii_uppercase
+# chars = ascii_lowercase + ascii_uppercase
+# задайте функцию-генератор, которая бы возвращала случайно сформированные email-адреса с доменом mail.ru и длиной в N символов. Например, при N=6, получим адрес: SCrUZo@mail.ru
+#
+# Для формирования случайного индекса для строки chars используйте функцию randint модуля random:
+#
+# import random
+# random.seed(1)
+# indx = random.randint(0, len(chars)-1)
+# Функция-генератор должна возвращать бесконечное число таких адресов, то есть, генерировать постоянно. Выведите первые пять сгенерированных email и выведите их в столбик (каждый с новой строки).
+# import random
+# from string import ascii_lowercase, ascii_uppercase
+#
+# chars = ascii_lowercase + ascii_uppercase
+#
+# random.seed(1)
+#
+#
+# def rnd_email(N, postfix="@mail.ru"):
+#     while "1":
+#         name_email = ""
+#         for i in range(N):
+#             name_email += chars[random.randint(0, len(chars) - 1)]
+#         yield name_email+postfix
+#
+#
+# N = int(input())
+# res = rnd_email(N)
+# for _ in range(0, 5):
+#     print(next(res))
+
+# Подвиг 5. Определите функцию-генератор, которая бы возвращала простые числа. (Простое число - это натуральное число, которое делится только на себя и на 1). Выведите с помощью этой функции первые 20 простых чисел (начиная с 2) в одну строчку через пробел.
+
+def prime_number_gen(n=2):
+    while True:
+        if all((n % i) for i in range(2, int(n ** 0.5) + 1)):
+            yield n
+        n += 1
+
+
+gen = prime_number_gen()
+
+for _ in range(20):
+    print(next(gen), end=" ")
+
+
