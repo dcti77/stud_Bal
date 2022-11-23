@@ -114,17 +114,23 @@
 #     print(next(res))
 
 # Подвиг 5. Определите функцию-генератор, которая бы возвращала простые числа. (Простое число - это натуральное число, которое делится только на себя и на 1). Выведите с помощью этой функции первые 20 простых чисел (начиная с 2) в одну строчку через пробел.
+#
+# def prime_number_gen(n=2):
+#     while True:
+#         if all((n % i) for i in range(2, int(n ** 0.5) + 1)):
+#             yield n
+#         n += 1
+#
+#
+# gen = prime_number_gen()
+#
+# for _ in range(20):
+#     print(next(gen), end=" ")
 
-def prime_number_gen(n=2):
-    while True:
-        if all((n % i) for i in range(2, int(n ** 0.5) + 1)):
-            yield n
-        n += 1
 
-
-gen = prime_number_gen()
-
-for _ in range(20):
-    print(next(gen), end=" ")
+# a = 0.1
+# for i in range(500):
+#     a += 0.1
+# print(int(a))
 
 
