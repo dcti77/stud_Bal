@@ -176,3 +176,4 @@ def split_and_merge_list(a):
     return merge_list(L, R)
 
 print(*split_and_merge_list(i))
+print(*split_and_merge_list(i))
